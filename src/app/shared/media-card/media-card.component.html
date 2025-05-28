@@ -1,0 +1,9 @@
+<mat-card class="card" appearance="outlined">
+  <img class="header-image" mat-card-image [src]="(urlPrefix() || '') + media().coverUrl" [alt]="media().title">
+  <mat-card-content>
+    <p> {{ media().title }}</p>
+    <p class="release-date">
+      {{ media().releaseDate | date }}
+    </p>
+  </mat-card-content>
+</mat-card>

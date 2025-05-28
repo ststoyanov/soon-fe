@@ -1,36 +1,35 @@
 <div>
   <h2>Movies</h2>
-  <ul>
+  <div  class="collection">
     @for (movie of tracked?.movies; track movie.id) {
-      <li>{{ movie.title }} - {{ movie.releaseDate | date }}</li>
+      <app-media-card [media]="movie" urlPrefix="https://image.tmdb.org/t/p/w500/"></app-media-card>
     }
-  </ul>
+  </div>
 </div>
 
 <div>
-  <h2 class="">Series</h2>
-  <ul>
+  <h2>Series</h2>
+  <div  class="collection">
     @for (series of tracked?.series; track series.id) {
-      <li>{{ series.title }} - {{ series.releaseDate | date }}</li>
+      <app-media-card [media]="series"></app-media-card>
     }
-  </ul>
+  </div>
 </div>
 
 <div>
   <h2>Games</h2>
-  <ul>
+  <div  class="collection">
     @for (game of tracked?.games; track game.id) {
-      <li>{{ game.title }} - {{ game.releaseDate | date }}</li>
+      <app-media-card [media]="game"></app-media-card>
     }
-  </ul>
+  </div>
 </div>
 
 <div>
   <h2>Manga</h2>
-  <ul>
+  <div  class="collection">
     @for (manga of tracked?.mangas; track manga.id) {
-      <img src="{{ manga.coverUrl }}" alt="{{ manga.title }}">
-      <li>{{ manga.title }} - {{ manga.releaseDate | date }}</li>
+      <app-media-card [media]="manga"></app-media-card>
     }
-  </ul>
+  </div>
 </div>

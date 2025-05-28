@@ -5,12 +5,12 @@ export interface Tracked {
   mangas: Trackable[];
 }
 
-interface Trackable {
-  id: string; // UUID in TypeScript is typically represented as a string
+export interface Trackable {
+  id: string;
   externalId: string;
   title: string;
-  releaseDate: string; // or Date if you prefer to work with Date objects
-  lastReleased: string; // or Date
+  releaseDate: string;
+  lastReleased: string;
   coverUrl: string;
   description: string;
 }
