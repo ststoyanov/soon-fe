@@ -1,0 +1,36 @@
+<div>
+  <h2>Movies</h2>
+  <ul>
+    @for (movie of tracked?.movies; track movie.id) {
+      <li>{{ movie.title }} - {{ movie.releaseDate | date }}</li>
+    }
+  </ul>
+</div>
+
+<div>
+  <h2 class="">Series</h2>
+  <ul>
+    @for (series of tracked?.series; track series.id) {
+      <li>{{ series.title }} - {{ series.releaseDate | date }}</li>
+    }
+  </ul>
+</div>
+
+<div>
+  <h2>Games</h2>
+  <ul>
+    @for (game of tracked?.games; track game.id) {
+      <li>{{ game.title }} - {{ game.releaseDate | date }}</li>
+    }
+  </ul>
+</div>
+
+<div>
+  <h2>Manga</h2>
+  <ul>
+    @for (manga of tracked?.mangas; track manga.id) {
+      <img src="{{ manga.coverUrl }}" alt="{{ manga.title }}">
+      <li>{{ manga.title }} - {{ manga.releaseDate | date }}</li>
+    }
+  </ul>
+</div>
