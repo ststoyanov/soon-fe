@@ -67,7 +67,8 @@
               "buildTarget": "soon-fe:build:production"
             },
             "development": {
-              "buildTarget": "soon-fe:build:development"
+              "buildTarget": "soon-fe:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
