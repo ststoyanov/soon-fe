@@ -1,0 +1,31 @@
+<mat-card>
+  <img class="background" [ngSrc]="media().coverUrl | mediaImage:media().mediaType" fill alt="Cover">
+  <mat-card-header>
+    <mat-card-title> {{ media().title }}</mat-card-title>
+    <mat-card-subtitle> {{ media().releaseDate | date: 'MMMM dd, y - HH:mm' }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content> {{ media().description }}</mat-card-content>
+
+  @if (media().lastReleased) {
+    <mat-card-footer>
+      Last Released: {{ media().lastReleased | date }}
+      @if (!watchedLatest()) {
+        <button mat-icon-button (click)="markWatched.emit(); $event.stopPropagation()">
+          <mat-icon class="responsive-icon">done</mat-icon>
+        </button>
+      }
+
+    </mat-card-footer>
+  }
+
+  <mat-card-actions>
+    <button mat-raised-button (click)="$event.stopPropagation()">Details</button>
+    @if (recentlyTracked()) {
+      <mat-icon (click)="$event.stopPropagation()" matTooltip="Tracked" class="responsive-icon">done</mat-icon>
+    } @else {
+      <button mat-raised-button (click)="toggleTracked(); $event.stopPropagation()">
+        {{ isTracked() ? 'Untrack' : 'Track' }}
+      </button>
+    }
+  </mat-card-actions>
+</mat-card>

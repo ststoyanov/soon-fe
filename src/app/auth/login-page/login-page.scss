@@ -1,0 +1,32 @@
+mat-card {
+  max-width: 30rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+mat-card-header {
+  justify-content: center;
+}
+
+mat-card-title {
+  font-size: 2rem;
+}
+
+mat-card-content {
+  margin: 1rem 0 0.5rem;
+}
+mat-card-footer {
+  font-size: small;
+  margin-bottom: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.register-link {
+  text-align: end;
+  font-size: small;
+}

@@ -1,0 +1,10 @@
+:host {
+  aspect-ratio: 9/16;
+  min-width: 0;
+  @media (max-width: 600px) {
+    height: 17rem;
+  }
+  @media (min-width: 600px) {
+    height: 28rem;
+  }
+}

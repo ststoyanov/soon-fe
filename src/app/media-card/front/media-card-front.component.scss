@@ -1,0 +1,48 @@
+mat-card {
+  height: 100%;
+  overflow: hidden;
+
+  &.GAME {
+    box-shadow: 0 0 1rem #ff5722;
+  }
+
+  &.TV_SERIES {
+    box-shadow: 0 0 1rem #2196f3;
+  }
+
+  &.MANGA {
+    box-shadow: 0 0 1rem #4caf50;
+  }
+
+  &.MOVIE {
+    box-shadow: 0 0 1rem #9c27b0;
+  }
+  img {
+    flex-grow: 1;
+    max-height: 27rem;
+    min-height: 0;
+    object-fit: cover;
+  }
+
+  mat-card-content {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+    min-height: 7%;
+    @media (max-width: 600px) {
+      padding: 0.25rem;
+      gap: 0;
+    }
+
+    .text-content {
+      flex: 1;
+      overflow-wrap: break-word;
+      overflow: hidden;
+    }
+  }
+}
+

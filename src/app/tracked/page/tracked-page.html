@@ -1,0 +1,13 @@
+@if (released().length) {
+  <app-collection name="Released" [media]="released()"
+                  (untrack)="untrack($event)"
+                  (markWatched)="markWatched($event)">
+  </app-collection>
+}
+
+@if (unreleased().length) {
+  <app-collection name="Coming Sooon" [media]="unreleased()"
+                  (untrack)="untrack($event)"
+                  (markWatched)="markWatched($event)">
+  </app-collection>
+}

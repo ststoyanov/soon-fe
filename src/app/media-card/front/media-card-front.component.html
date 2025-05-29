@@ -1,0 +1,10 @@
+<mat-card [class]="media().mediaType">
+  <img mat-card-image [src]="media().coverUrl | mediaImage: media().mediaType" [alt]="media().title"/>
+  <mat-card-content>
+    <div class="text-content">
+      <mat-card-title>{{ media().title }}</mat-card-title>
+      <mat-card-subtitle> {{ media().releaseDate | date }}</mat-card-subtitle>
+    </div>
+    <app-media-icon [mediaType]="media().mediaType" />
+  </mat-card-content>
+</mat-card>

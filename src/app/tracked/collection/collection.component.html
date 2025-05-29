@@ -1,0 +1,13 @@
+<h2>
+  <button mat-icon-button (click)="toggleShow()">
+    <mat-icon class="responsive-icon"> {{ show() ? 'remove' : 'add' }}</mat-icon>
+  </button>
+  {{ name() }}
+</h2>
+@if (show()) {
+  <div class="collection">
+    @for (media of media(); track media.id) {
+      <app-media-card [media]="media" (untrack)="untrack.emit(media)" (markWatched)="markWatched.emit(media)"></app-media-card>
+    }
+  </div>
+}

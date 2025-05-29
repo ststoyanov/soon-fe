@@ -1,14 +1,60 @@
-@layer tailwind-base, primeng, tailwind-utilities;
+@use '@angular/material' as mat;
 
-@layer tailwind-base {
-  @tailwind base;
+html {
+  color-scheme: light dark;
+  @include mat.theme((
+    color: mat.$cyan-palette,
+    typography: Roboto,
+    density: 0
+  ));
 }
 
-@layer tailwind-utilities {
-  @tailwind components;
-  @tailwind utilities;
-  @tailwind screens;
+@include mat.button-overrides((
+  protected-container-shape: 1rem,
+  protected-touch-target-display: none,
+));
+
+@include mat.card-overrides((
+  title-text-size: large,
+  title-text-line-height: normal,
+  title-text-weight: bolder,
+  subtitle-text-size: medium,
+  subtitle-text-line-height: normal,
+  subtitle-text-weight: normal,
+));
+
+@media (max-width: 600px) {
+  @include mat.card-overrides((
+    title-text-size: small,
+    subtitle-text-size: small,
+  ));
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+
+  @media (max-width: 600px) {
+    font-size: x-small;
+    mat-icon {
+      font-size: x-small;
+    }
+  }
+}
+
+a {
+  color: var(--mat-sys-primary);
+}
+
+.responsive-icon {
+  z-index: 1;
+  align-content: center;
+
+  @media (max-width: 600px) {
+    font-size: medium;
+  }
+}

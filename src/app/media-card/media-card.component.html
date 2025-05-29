@@ -1,0 +1,7 @@
+@if (showFront()) {
+  <app-media-card-front [media]="media()" (mouseenter)="onMouseEnter()" (click)="toggleCard()"/>
+
+} @else {
+  <app-media-card-back [(recentlyTracked)]="recentlyTracked" [media]="media()" (trackedChange)="toggleTracked($event)"
+                       (mouseleave)="onMouseLeave()" (click)="toggleCard()" (markWatched)="markWatched.emit()"/>
+}

@@ -1,0 +1,36 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Sooon</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="this.form" (ngSubmit)="onSubmit()">
+            @if (this.form.errors) {
+                <mat-error>Could not register</mat-error>
+            }
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input formControlName="email" matInput autocomplete="new-email">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Username</mat-label>
+                <input formControlName="username" matInput autocomplete="new-username">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input formControlName="password" matInput [type]="showPassword() ? 'text' : 'password'"
+                       autocomplete="new-password">
+                <button matIconButton matSuffix type="button"
+                        (click)="togglePasswordVisibility($event)"
+                        [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="showPassword()">
+                    <mat-icon>{{ showPassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+            </mat-form-field>
+            <button type="submit" mat-raised-button color="primary" [disabled]="this.form.invalid">Register</button>
+        </form>
+    </mat-card-content>
+    <mat-card-footer>
+        <a routerLink="/login">Already have an account? Login now!</a>
+    </mat-card-footer>
+</mat-card>
