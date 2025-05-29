@@ -13,4 +13,5 @@ export interface Trackable {
   lastReleased: string;
   coverUrl: string;
   description: string;
+  type: 'MOVIE' | 'MANGA' | 'SERIES' | 'GAME';
 }
