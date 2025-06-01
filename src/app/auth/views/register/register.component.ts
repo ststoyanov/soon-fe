@@ -24,13 +24,13 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
     MatButton,
     MatIconButton,
     MatSuffix,
-    RouterLink,
     MatCardFooter,
+    RouterLink,
   ],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.scss',
 })
-export class LoginComponent {
+export class RegisterComponent {
   protected form = new FormGroup({
     username: new FormControl('', {
       nonNullable: true,
@@ -38,7 +38,11 @@ export class LoginComponent {
     }),
     password: new FormControl('', {
       nonNullable: true,
-      validators: [Validators.required],
+      validators: [Validators.required, Validators.minLength(6)],
+    }),
+    email: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.email],
     }),
   });
 
@@ -55,7 +59,7 @@ export class LoginComponent {
   }
 
   protected onSubmit() {
-    this.authService.login(this.form.getRawValue()).subscribe({
+    this.authService.register(this.form.getRawValue()).subscribe({
       next: () => this.forwardLoggedIn(),
       error: () => this.form.setErrors([true]),
     });

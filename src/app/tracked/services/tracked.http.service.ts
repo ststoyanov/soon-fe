@@ -1,18 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Tracked } from '../models/tracked.model';
-import { tap } from 'rxjs';
+import { Trackable } from '../models/tracked.model';
 
 export class TrackedHttpService {
   constructor(private httpClient: HttpClient) {}
 
   getTracked() {
-    return this.httpClient.get<Tracked>('/api/v1/tracked').pipe(
-      tap(tracked => {
-        tracked.movies.forEach(movie => (movie.type = 'MOVIE'));
-        tracked.series.forEach(series => (series.type = 'SERIES'));
-        tracked.games.forEach(series => (series.type = 'GAME'));
-        tracked.mangas.forEach(manga => (manga.type = 'MANGA'));
-      })
-    );
+    return this.httpClient.get<Trackable[]>('/api/v1/tracked');
+  }
+
+  untrack(id: string) {
+    return this.httpClient.post<Trackable[]>(`/api/v1/tracked/${id}/untrack`, {});
   }
 }

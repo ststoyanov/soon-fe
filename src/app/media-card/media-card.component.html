@@ -1,0 +1,5 @@
+@if (showFront()) {
+  <app-media-card-front [media]="media()" (toggleCard)="showFront.set(false)"></app-media-card-front>
+} @else {
+  <app-media-card-back [media]="media()" (untrack)="untrack.emit()" (toggleCard)="showFront.set(true)"></app-media-card-back>
+}

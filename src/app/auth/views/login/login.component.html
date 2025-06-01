@@ -1,7 +1,9 @@
-<mat-card class="max-w-[50%]">
-  <mat-card-title>Sooon</mat-card-title>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Soooon</mat-card-title>
+  </mat-card-header>
   <mat-card-content>
-    <form [formGroup]="this.form" (ngSubmit)="onSubmit()" class="flex flex-col">
+    <form [formGroup]="this.form" (ngSubmit)="onSubmit()">
       @if (this.form.errors) {
         <mat-error>Wrong username or password</mat-error>
       }
@@ -12,18 +14,17 @@
       <mat-form-field>
         <mat-label>Password</mat-label>
         <input formControlName="password" matInput [type]="showPassword() ? 'text' : 'password'">
-        <button
-          matIconButton
-          matSuffix
-          (click)="togglePasswordVisibility($event)"
-          [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="showPassword()"
-        >
+        <button matIconButton matSuffix type="button"
+                (click)="togglePasswordVisibility($event)"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="showPassword()">
           <mat-icon>{{ showPassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
       </mat-form-field>
-      <button mat-raised-button color="primary" [disabled]="this.form.errors">Login</button>
+      <button type="submit" mat-raised-button color="primary" [disabled]="this.form.invalid">Login</button>
     </form>
   </mat-card-content>
+  <mat-card-footer>
+    <a routerLink="/register">Don't have an account? Register now!</a>
+  </mat-card-footer>
 </mat-card>
-

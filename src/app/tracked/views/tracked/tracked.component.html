@@ -1,5 +1,5 @@
 <div class="collection">
   @for (media of tracked; track media.id) {
-    <app-media-card [media]="media"></app-media-card>
+    <app-media-card [media]="media" (untrack)="untrack(media.id)"></app-media-card>
   }
 </div>

@@ -1,0 +1,34 @@
+mat-card {
+  height: 100%;
+  overflow: hidden;
+
+  img {
+    flex-grow: 1;
+    max-height: 27rem;
+    min-height: 0;
+  }
+
+  mat-card-content {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    flex: 1;
+    gap: 0.5rem;
+    @media (max-width: 600px) {
+      padding: 0.5rem 0.5rem;
+      gap: 0;
+    }
+
+    .text-content {
+      flex: 1;
+      overflow-wrap: break-word;
+      overflow: hidden;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}
+

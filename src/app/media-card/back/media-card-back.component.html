@@ -1,0 +1,24 @@
+<mat-card (mouseleave)="toggleCard.emit()" (touchstart)="toggleCard.emit()"
+          [style.background-image]="'url(' + (media().coverUrl | mediaImage:media().mediaType) + ')'">
+  <div class="blur-overlay">
+    <mat-card-content>
+      <div class="text-content">
+        <b>{{ media().title }}</b>
+        <p>
+          {{ media().releaseDate | date }}
+        </p>
+      </div>
+      <p>
+        {{ media().description }}
+      </p>
+      @if (media().lastReleased) {
+        <p class="small-text">
+          Last Released: {{ media().lastReleased | date }}
+        </p>
+      }
+    </mat-card-content>
+    <mat-card-actions>
+      <button matButton class="untrack" (click)="untrack.emit(); $event.stopPropagation()">Untrack</button>
+    </mat-card-actions>
+  </div>
+</mat-card>

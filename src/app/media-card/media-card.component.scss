@@ -1,0 +1,10 @@
+:host {
+  @media (max-width: 600px) {
+    width: 10rem;
+    height: 17rem;
+  }
+  @media (min-width: 600px) {
+    width: 18rem;
+    height: 31rem;
+  }
+}

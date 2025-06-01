@@ -1,20 +1,20 @@
-@layer tailwind-base, primeng, tailwind-utilities;
-
-@layer tailwind-base {
-  @tailwind base;
-}
-
-@layer tailwind-utilities {
-  @tailwind components;
-  @tailwind utilities;
-  @tailwind screens;
-}
-
 html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+
+  @media (max-width: 600px) {
+    font-size: x-small;
+    mat-icon {
+      font-size: x-small;
+    }
+  }
+}
+
+a {
+  color: var(--mat-sys-primary);
 }

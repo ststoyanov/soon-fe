@@ -1,0 +1,38 @@
+mat-card {
+  background-size: cover;
+  background-position: center;
+  color: white;
+  height: 100%;
+  overflow: hidden;
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.6);
+}
+
+.blur-overlay {
+  backdrop-filter: blur(1.5rem);
+  background-color: rgba(0, 0, 0, 0.25);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card-actions {
+  justify-content: center;
+  margin-top: auto;
+}
+
+.small-text {
+  font-size: 80%;
+}
+
+.text-content {
+  flex: 1;
+  overflow-wrap: break-word;
+  overflow: hidden;
+
+  p {
+    margin: 0;
+  }
+}
+
+
