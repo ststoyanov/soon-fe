@@ -2,7 +2,7 @@
           [style.background-image]="'url(' + (media().coverUrl | mediaImage:media().mediaType) + ')'">
   <div class="blur-overlay">
     <mat-card-content>
-      <div class="text-content">
+      <div class="text-combined">
         <b>{{ media().title }}</b>
         <p>
           {{ media().releaseDate | date }}
@@ -18,7 +18,7 @@
       }
     </mat-card-content>
     <mat-card-actions>
-      <button matButton class="untrack" (click)="untrack.emit(); $event.stopPropagation()">Untrack</button>
+      <button mat-raised-button (click)="untrack.emit(); $event.stopPropagation()">Untrack</button>
     </mat-card-actions>
   </div>
 </mat-card>
