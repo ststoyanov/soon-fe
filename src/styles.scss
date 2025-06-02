@@ -1,5 +1,27 @@
-html,
-body {
+@use '@angular/material' as mat;
+
+@include mat.button-overrides((
+  protected-container-shape: 1rem,
+  protected-touch-target-display: none,
+));
+
+@include mat.card-overrides((
+  title-text-size: large,
+  title-text-line-height: normal,
+  title-text-weight: bolder,
+  subtitle-text-size: medium,
+  subtitle-text-line-height: normal,
+  subtitle-text-weight: normal,
+));
+
+@media (max-width: 600px) {
+  @include mat.card-overrides((
+    title-text-size: small,
+    subtitle-text-size: small,
+  ));
+}
+
+html, body {
   height: 100%;
 }
 

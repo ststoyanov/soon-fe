@@ -1,24 +1,19 @@
-<mat-card (mouseleave)="toggleCard.emit()" (touchstart)="toggleCard.emit()"
-          [style.background-image]="'url(' + (media().coverUrl | mediaImage:media().mediaType) + ')'">
-  <div class="blur-overlay">
-    <mat-card-content>
-      <div class="text-combined">
-        <b>{{ media().title }}</b>
-        <p>
-          {{ media().releaseDate | date }}
-        </p>
-      </div>
-      <p>
-        {{ media().description }}
-      </p>
-      @if (media().lastReleased) {
-        <p class="small-text">
-          Last Released: {{ media().lastReleased | date }}
-        </p>
-      }
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button (click)="untrack.emit(); $event.stopPropagation()">Untrack</button>
-    </mat-card-actions>
-  </div>
+<mat-card (touchstart)="toggleCard.emit()" (mouseleave)="toggleCard.emit()">
+  <img class="background" [ngSrc]="media().coverUrl | mediaImage:media().mediaType" fill alt="Cover">
+  <mat-card-header>
+    <mat-card-title> {{ media().title }}</mat-card-title>
+    <mat-card-subtitle> {{ media().releaseDate | date: 'MMMM dd, y - HH:mm' }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content> {{ media().description }}</mat-card-content>
+
+  @if (media().lastReleased) {
+    <mat-card-footer>
+      Last Released: {{ media().lastReleased | date }}
+    </mat-card-footer>
+  }
+
+  <mat-card-actions>
+    <button mat-raised-button (touchstart)="$event.stopPropagation()">Details</button>
+    <button mat-raised-button (click)="untrack.emit(); $event.stopPropagation()">Untrack</button>
+  </mat-card-actions>
 </mat-card>

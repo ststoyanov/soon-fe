@@ -1,4 +1,4 @@
-<mat-card class="front" (touchstart)="toggleCard.emit()">
+<mat-card (touchstart)="toggleCard.emit()">
   <img mat-card-image [src]="media().coverUrl | mediaImage: media().mediaType" [alt]="media().title" (mouseenter)="toggleCard.emit()"/>
   <mat-card-content>
     <div class="text-content">

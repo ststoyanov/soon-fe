@@ -1,48 +1,50 @@
+.background {
+  filter: blur(1.5rem);
+  z-index: -1;
+  object-fit: cover;
+}
+
 mat-card {
-  background-size: cover;
-  background-position: center;
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   height: 100%;
   overflow: hidden;
+  gap: 1rem;
+  padding: 1rem;
+  @media (max-width: 600px) {
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  mat-card-header, mat-card-content, mat-card-actions, mat-card-footer {
+    padding: 0;
+    min-height: unset;
+  }
 
   mat-card-content {
     overflow: hidden;
-
-    @media (max-width: 600px) {
-      padding: 0.5rem 0.5rem;
-      gap: 0;
-    }
+    flex: 1;
   }
-  .blur-overlay {
-    backdrop-filter: blur(1.5rem);
-    background-color: rgba(0, 0, 0, 0.25);
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
 
-    .text-combined {
-      p {
-        margin: 0;
-      }
-    }
+  mat-card-subtitle {
+    color: inherit;
+  }
 
-    .small-text {
-      font-size: 80%;
-    }
+  mat-card-actions {
+    justify-content: center;
+    margin-top: auto;
+    gap: 0.5rem;
+  }
 
-    mat-card-actions {
-      justify-content: center;
-      margin-top: auto;
-
-      button {
-        @media (max-width: 600px) {
-          height: 2rem;
-          font-size: small;
-        }
-      }
-    }
+  mat-card-footer {
+    font-size: 80%;
   }
 }
 
+@media (max-width: 600px) {
+  button {
+    height: 1.5rem;
+    font-size: small;
+  }
+}
 
