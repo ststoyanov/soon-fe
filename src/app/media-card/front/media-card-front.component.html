@@ -1,11 +1,10 @@
 <mat-card (touchstart)="toggleCard.emit()">
-  <img mat-card-image [src]="media().coverUrl | mediaImage: media().mediaType" [alt]="media().title" (mouseenter)="toggleCard.emit()"/>
+  <img mat-card-image [src]="media().coverUrl | mediaImage: media().mediaType" [alt]="media().title"
+       (mouseenter)="toggleCard.emit()"/>
   <mat-card-content>
     <div class="text-content">
-      <b>{{ media().title }}</b>
-      <p class="release-date">
-        {{ media().releaseDate | date }}
-      </p>
+      <mat-card-title>{{ media().title }}</mat-card-title>
+      <mat-card-subtitle> {{ media().releaseDate | date }}</mat-card-subtitle>
     </div>
     <app-media-icon [mediaType]="media().mediaType"></app-media-icon>
   </mat-card-content>
