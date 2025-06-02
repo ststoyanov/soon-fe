@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { AuthGuard } from './shared/guards/auth.guard';
+import { AuthGuard, HomeRedirect } from './shared/guards/auth.guard';
 
 export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/tracked',
+    redirectTo: HomeRedirect,
   },
   {
     path: 'login',
