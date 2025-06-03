@@ -21,5 +21,5 @@ export const HomeRedirect: RedirectFunction = () => {
     return router.createUrlTree(['/tracked']);
   }
 
-  return router.createUrlTree(['/login']);
+  return router.createUrlTree(['/discover']);
 };

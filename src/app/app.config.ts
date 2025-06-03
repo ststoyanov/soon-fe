@@ -4,8 +4,9 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { AuthHttpService } from './auth/services/auth.http.service';
 import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { TrackedHttpService } from './tracked/services/tracked.http.service';
+import { TrackedHttpClient } from './tracked/services/tracked-http-client';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { MediaHttpClient } from './discover/media-http-client';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,9 +20,13 @@ export const appConfig: ApplicationConfig = {
       deps: [HttpClient],
     },
     {
-      provide: TrackedHttpService,
-      useFactory: (http: HttpClient) => new TrackedHttpService(http),
+      provide: TrackedHttpClient,
+      useFactory: (http: HttpClient) => new TrackedHttpClient(http),
       deps: [HttpClient],
+    },
+    {
+      provide: MediaHttpClient,
+      useClass: MediaHttpClient,
     },
   ],
 };

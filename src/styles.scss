@@ -1,5 +1,14 @@
 @use '@angular/material' as mat;
 
+html {
+  color-scheme: light dark;
+  @include mat.theme((
+    color: mat.$cyan-palette,
+    typography: Roboto,
+    density: 0
+  ));
+}
+
 @include mat.button-overrides((
   protected-container-shape: 1rem,
   protected-touch-target-display: none,

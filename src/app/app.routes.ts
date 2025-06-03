@@ -8,6 +8,10 @@ export const routes: Routes = [
     redirectTo: HomeRedirect,
   },
   {
+    path: 'discover',
+    loadComponent: () => import('./discover/page/discover-page').then(m => m.DiscoverPage),
+  },
+  {
     path: 'login',
     loadComponent: () => import('./auth/views/login/login.component').then(m => m.LoginComponent),
   },

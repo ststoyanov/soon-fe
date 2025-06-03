@@ -8,6 +8,10 @@ const IGDB_COVER_BIG = 't_cover_big';
 @Pipe({ name: 'mediaImage' })
 export class MediaImagePipe implements PipeTransform {
   transform(url: string, type: MediaType): string {
+    if (!url) {
+      return '/img/Image-not-found.png';
+    }
+
     switch (type) {
       case 'MOVIE':
         return TMDB_COVER_URL + url;

@@ -1,5 +1,8 @@
-<div class="header">
+<mat-toolbar>
+  <a mat-button routerLink="/">Home</a>
+  <a mat-button routerLink="/discover">Discover</a>
+
   @if (authService.isAuthenticated()) {
-    <button matButton (click)="logout()">Logout</button>
+    <button class="logout" matButton (click)="logout()">Logout</button>
   }
-</div>
+</mat-toolbar>
