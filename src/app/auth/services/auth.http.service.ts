@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { AuthenticationResponse, LoginRequest } from '../models/auth.model';
 import { of, tap } from 'rxjs';
+import { Router } from '@angular/router';
 
 export const BEARER_TOKEN = 'Bearer Token';
 
@@ -9,6 +10,7 @@ export const BEARER_TOKEN = 'Bearer Token';
   providedIn: 'root',
 })
 export class AuthHttpService {
+  private router = inject(Router);
   private authenticated = false;
 
   isAuthenticated() {
@@ -32,6 +34,7 @@ export class AuthHttpService {
   logout() {
     localStorage.removeItem(BEARER_TOKEN);
     this.authenticated = false;
+    void this.router.navigate(['']);
     return of(true);
   }
 

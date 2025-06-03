@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { BEARER_TOKEN } from '../../auth/services/auth.http.service';
+import { inject, Injectable } from '@angular/core';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { catchError, Observable, throwError } from 'rxjs';
+import { AuthHttpService, BEARER_TOKEN } from '../../auth/services/auth.http.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+  authHttpClient = inject(AuthHttpService);
   intercept(httpRequest: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token = localStorage.getItem(BEARER_TOKEN);
 
@@ -14,6 +15,15 @@ export class AuthInterceptor implements HttpInterceptor {
       });
     }
 
-    return next.handle(httpRequest);
+    return next.handle(httpRequest).pipe(
+      catchError(error => {
+        if (error instanceof HttpErrorResponse) {
+          if (error.status === 401) {
+            this.authHttpClient.logout();
+          }
+        }
+        return throwError(() => error);
+      })
+    );
   }
 }

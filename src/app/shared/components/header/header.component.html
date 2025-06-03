@@ -2,7 +2,7 @@
   <a mat-button routerLink="/">Home</a>
   <a mat-button routerLink="/discover">Discover</a>
 
-  @if (authService.isAuthenticated()) {
+  @if (authHttpClient.isAuthenticated()) {
     <button class="logout" matButton (click)="logout()">Logout</button>
   }
 </mat-toolbar>

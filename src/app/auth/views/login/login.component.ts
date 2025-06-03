@@ -7,6 +7,7 @@ import { MatCard, MatCardContent, MatCardFooter, MatCardHeader, MatCardTitle } f
 import { MatInput, MatSuffix } from '@angular/material/input';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -50,7 +51,7 @@ export class LoginComponent {
     private route: ActivatedRoute
   ) {
     if (this.authService.isAuthenticated()) {
-      this.router.navigate(['']);
+      void this.router.navigate(['']);
     }
   }
 

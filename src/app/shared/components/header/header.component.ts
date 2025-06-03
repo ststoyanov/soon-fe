@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { AuthHttpService } from '../../../auth/services/auth.http.service';
 import { Router, RouterLink } from '@angular/router';
@@ -11,12 +11,9 @@ import { MatToolbar } from '@angular/material/toolbar';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  constructor(
-    protected authService: AuthHttpService,
-    private router: Router
-  ) {}
+  authHttpClient = inject(AuthHttpService);
 
   logout() {
-    this.authService.logout().subscribe(() => this.router.navigate(['']));
+    this.authHttpClient.logout().subscribe();
   }
 }
