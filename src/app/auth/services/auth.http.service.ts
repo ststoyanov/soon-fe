@@ -10,14 +10,16 @@ export const BEARER_TOKEN = 'Bearer Token';
   providedIn: 'root',
 })
 export class AuthHttpService {
+  private httpClient = inject(HttpClient);
   private router = inject(Router);
+
   private authenticated = false;
 
   isAuthenticated() {
     return this.authenticated;
   }
 
-  constructor(private httpClient: HttpClient) {
+  constructor() {
     this.authenticated = !!localStorage.getItem(BEARER_TOKEN);
   }
 

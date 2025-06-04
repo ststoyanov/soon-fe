@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { AuthHttpService } from '../../services/auth.http.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButton, MatIconButton } from '@angular/material/button';
@@ -32,6 +32,10 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
+  private authService = inject(AuthHttpService);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+
   protected form = new FormGroup({
     username: new FormControl('', {
       nonNullable: true,
@@ -45,11 +49,7 @@ export class LoginComponent {
 
   showPassword = signal(false);
 
-  constructor(
-    private authService: AuthHttpService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {
+  constructor() {
     if (this.authService.isAuthenticated()) {
       void this.router.navigate(['']);
     }
