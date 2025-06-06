@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { MediaType } from '../../tracked/models/tracked.model';
+import { MediaType } from '../../tracked/trackable';
 
 const TMDB_COVER_URL = 'https://image.tmdb.org/t/p/w500/';
 const IGDB_COVER_THUMB = 't_thumb';

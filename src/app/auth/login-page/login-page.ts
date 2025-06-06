@@ -1,5 +1,5 @@
-import { Component, signal, inject } from '@angular/core';
-import { AuthHttpService } from '../../services/auth.http.service';
+import { Component, inject, signal } from '@angular/core';
+import { AuthHttpClient } from '../auth-http-client';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -7,7 +7,6 @@ import { MatCard, MatCardContent, MatCardFooter, MatCardHeader, MatCardTitle } f
 import { MatInput, MatSuffix } from '@angular/material/input';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -28,11 +27,11 @@ import { HttpErrorResponse } from '@angular/common/http';
     RouterLink,
     MatCardFooter,
   ],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  templateUrl: './login-page.html',
+  styleUrl: './login-page.scss',
 })
-export class LoginComponent {
-  private authService = inject(AuthHttpService);
+export class LoginPage {
+  private authService = inject(AuthHttpClient);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
 

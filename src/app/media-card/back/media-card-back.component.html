@@ -1,4 +1,4 @@
-<mat-card (touchstart)="toggleCard.emit()" (mouseleave)="toggleCard.emit()">
+<mat-card>
   <img class="background" [ngSrc]="media().coverUrl | mediaImage:media().mediaType" fill alt="Cover">
   <mat-card-header>
     <mat-card-title> {{ media().title }}</mat-card-title>
@@ -13,7 +13,13 @@
   }
 
   <mat-card-actions>
-    <button mat-raised-button (touchstart)="$event.stopPropagation()">Details</button>
-    <button mat-raised-button (click)="untrack.emit(); $event.stopPropagation()">Untrack</button>
+    <button mat-raised-button (click)="$event.stopPropagation()">Details</button>
+    @if (recentlyTracked()) {
+      <button mat-icon-button matTooltip="Tracked" (click)="toggleTracked(false); $event.stopPropagation()"><mat-icon>done</mat-icon></button>
+    } @else {
+      <button mat-raised-button (click)="toggleTracked(); $event.stopPropagation()">
+        {{ isTracked() ? 'Untrack' : 'Track' }}
+      </button>
+    }
   </mat-card-actions>
 </mat-card>

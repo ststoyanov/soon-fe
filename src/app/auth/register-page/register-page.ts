@@ -1,5 +1,5 @@
 import { Component, signal, inject } from '@angular/core';
-import { AuthHttpService } from '../../services/auth.http.service';
+import { AuthHttpClient } from '../auth-http-client';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -27,11 +27,11 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
     MatCardFooter,
     RouterLink,
   ],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.scss',
+  templateUrl: './register-page.html',
+  styleUrl: './register-page.scss',
 })
-export class RegisterComponent {
-  private authService = inject(AuthHttpService);
+export class RegisterPage {
+  private authService = inject(AuthHttpClient);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
 

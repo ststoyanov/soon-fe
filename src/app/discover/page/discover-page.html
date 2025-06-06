@@ -4,7 +4,7 @@
          (keydown.enter)="search(query.value)">
 </mat-form-field>
 <div class="collection">
-  @for (result of results; track result.id) {
-    <app-media-card [media]="result" (untrack)="track(result)"></app-media-card>
+  @for (result of results; track `${result.id}-${result.externalId}`) {
+    <app-media-card [media]="result" (track)="track(result)"></app-media-card>
   }
 </div>

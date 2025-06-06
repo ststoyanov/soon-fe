@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { MediaType } from '../../tracked/models/tracked.model';
+import { MediaType } from '../../tracked/trackable';
 import { MatIcon } from '@angular/material/icon';
 
 @Component({

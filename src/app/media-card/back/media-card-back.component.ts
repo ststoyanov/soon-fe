@@ -1,4 +1,4 @@
-import { Component, computed, input, output } from '@angular/core';
+import { Component, effect, input, model, output, signal } from '@angular/core';
 import {
   MatCard,
   MatCardActions,
@@ -8,10 +8,12 @@ import {
   MatCardSubtitle,
   MatCardTitle,
 } from '@angular/material/card';
-import { MatButton } from '@angular/material/button';
-import { Trackable } from '../../tracked/models/tracked.model';
+import { MatButton, MatIconButton } from '@angular/material/button';
+import { Trackable } from '../../tracked/trackable';
 import { DatePipe, NgOptimizedImage } from '@angular/common';
-import { MediaImagePipe } from '../../shared/pipes/image-pipes';
+import { MediaImagePipe } from '../../shared/pipes/image-pipe';
+import { MatIcon } from '@angular/material/icon';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-media-card-back',
@@ -27,12 +29,26 @@ import { MediaImagePipe } from '../../shared/pipes/image-pipes';
     MatCardHeader,
     MatCardFooter,
     NgOptimizedImage,
+    MatIconButton,
+    MatIcon,
+    MatTooltip,
   ],
   templateUrl: './media-card-back.component.html',
   styleUrl: './media-card-back.component.scss',
 })
 export class MediaCardBackComponent {
   media = input.required<Trackable>();
-  toggleCard = output<void>();
-  untrack = output<void>();
+  isTracked = signal<boolean>(false);
+  trackedChange = output<boolean>();
+  recentlyTracked = model<boolean>(false);
+
+  constructor() {
+    effect(() => {
+      this.isTracked.set(!!this.media().lastWatchedAt);
+    });
+  }
+
+  toggleTracked(value = !this.isTracked()) {
+    this.trackedChange.emit(value);
+  }
 }

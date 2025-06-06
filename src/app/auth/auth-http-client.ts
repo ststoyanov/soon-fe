@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { AuthenticationResponse, LoginRequest } from '../models/auth.model';
+import { AuthenticationResponse, LoginRequest, RegisterRequest } from './auth-models';
 import { of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -9,7 +9,7 @@ export const BEARER_TOKEN = 'Bearer Token';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthHttpService {
+export class AuthHttpClient {
   private httpClient = inject(HttpClient);
   private router = inject(Router);
 
@@ -29,7 +29,7 @@ export class AuthHttpService {
       .pipe(tap(response => this.handleAuth(response)));
   }
 
-  register(request: LoginRequest) {
+  register(request: RegisterRequest) {
     return this.httpClient.post<AuthenticationResponse>('/api/v1/auth/register', request).pipe(tap(response => this.handleAuth(response)));
   }
 

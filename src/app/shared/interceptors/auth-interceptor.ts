@@ -1,11 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { AuthHttpService, BEARER_TOKEN } from '../../auth/services/auth.http.service';
+import { AuthHttpClient, BEARER_TOKEN } from '../../auth/auth-http-client';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  authHttpClient = inject(AuthHttpService);
+  authHttpClient = inject(AuthHttpClient);
   intercept(httpRequest: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token = localStorage.getItem(BEARER_TOKEN);
 

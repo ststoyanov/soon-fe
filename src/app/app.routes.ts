@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { AuthGuard, HomeRedirect } from './shared/guards/auth.guard';
+import { AuthGuard, HomeRedirect } from './shared/guards/auth-guard';
 
 export const routes: Routes = [
   {
@@ -13,15 +13,15 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    loadComponent: () => import('./auth/views/login/login.component').then(m => m.LoginComponent),
+    loadComponent: () => import('./auth/login-page/login-page').then(m => m.LoginPage),
   },
   {
     path: 'register',
-    loadComponent: () => import('./auth/views/register/register.component').then(m => m.RegisterComponent),
+    loadComponent: () => import('./auth/register-page/register-page').then(m => m.RegisterPage),
   },
   {
     path: 'tracked',
-    loadComponent: () => import('./tracked/views/tracked/tracked.component').then(m => m.TrackedComponent),
+    loadComponent: () => import('./tracked/page/tracked-page').then(m => m.TrackedPage),
     canActivate: [AuthGuard],
   },
 ];

@@ -1,19 +1,13 @@
-export interface Tracked {
-  movies: Trackable[];
-  series: Trackable[];
-  games: Trackable[];
-  mangas: Trackable[];
-}
-
 export interface Trackable {
   id: string;
   externalId: string;
   title: string;
-  releaseDate: string;
-  lastReleased: string;
+  releaseDate?: Date;
+  lastReleased?: Date;
   coverUrl: string;
   description: string;
   mediaType: MediaType;
+  lastWatchedAt?: Date;
 }
 
 export type MediaType = 'MOVIE' | 'MANGA' | 'TV_SERIES' | 'GAME';

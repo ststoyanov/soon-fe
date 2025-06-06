@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { MediaType, Trackable } from '../models/tracked.model';
+import { MediaType, Trackable } from './trackable';
 import { BehaviorSubject, switchMap, tap } from 'rxjs';
 
 export class TrackedHttpClient {

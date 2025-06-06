@@ -1,8 +1,8 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { MatCard, MatCardContent, MatCardImage, MatCardSubtitle, MatCardTitle } from '@angular/material/card';
 import { DatePipe } from '@angular/common';
-import { Trackable } from '../../tracked/models/tracked.model';
-import { MediaImagePipe } from '../../shared/pipes/image-pipes';
+import { Trackable } from '../../tracked/trackable';
+import { MediaImagePipe } from '../../shared/pipes/image-pipe';
 import { MediaIconComponent } from '../icon/media-icon.component';
 
 @Component({
@@ -23,5 +23,4 @@ import { MediaIconComponent } from '../icon/media-icon.component';
 })
 export class MediaCardFrontComponent {
   media = input.required<Trackable>();
-  toggleCard = output<void>();
 }
