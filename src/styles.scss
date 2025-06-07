@@ -49,3 +49,12 @@ body {
 a {
   color: var(--mat-sys-primary);
 }
+
+.responsive-icon {
+  z-index: 1;
+  align-content: center;
+
+  @media (max-width: 600px) {
+    font-size: 1rem;
+  }
+}

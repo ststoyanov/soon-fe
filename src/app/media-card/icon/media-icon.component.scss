@@ -2,10 +2,4 @@
   display: flex;
 }
 
-mat-icon {
-  @media (max-width: 600px) {
-    font-size: 1rem;
-  }
 
-  align-content: center;
-}

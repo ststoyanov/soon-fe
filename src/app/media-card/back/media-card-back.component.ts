@@ -8,7 +8,7 @@ import {
   MatCardSubtitle,
   MatCardTitle,
 } from '@angular/material/card';
-import { MatButton, MatIconButton } from '@angular/material/button';
+import { MatButton } from '@angular/material/button';
 import { Trackable } from '../../tracked/trackable';
 import { DatePipe, NgOptimizedImage } from '@angular/common';
 import { MediaImagePipe } from '../../shared/pipes/image-pipe';
@@ -29,7 +29,6 @@ import { MatTooltip } from '@angular/material/tooltip';
     MatCardHeader,
     MatCardFooter,
     NgOptimizedImage,
-    MatIconButton,
     MatIcon,
     MatTooltip,
   ],

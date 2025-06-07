@@ -4,10 +4,11 @@ import { MediaCardComponent } from '../../media-card/media-card.component';
 import { MediaHttpClient } from '../../discover/media-http-client';
 import { take } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatIconButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-tracked',
-  imports: [MediaCardComponent],
+  imports: [MediaCardComponent, MatIconButton],
   templateUrl: './tracked-page.html',
   styleUrl: './tracked-page.scss',
 })
@@ -15,6 +16,8 @@ export class TrackedPage {
   private mediaHttpClient = inject(MediaHttpClient);
 
   tracked = signal<Trackable[]>([]);
+  showReleased = signal<boolean>(true);
+  showUnreleased = signal<boolean>(true);
   released = computed(() => this.tracked().filter(media => this.hasReleased(media)));
   unreleased = computed(() => this.tracked().filter(media => !this.hasReleased(media)));
 
@@ -37,5 +40,13 @@ export class TrackedPage {
     } else {
       return !!media.lastReleased && !!media.lastWatchedAt && media.lastWatchedAt < media.lastReleased;
     }
+  }
+
+  toggleShowReleased() {
+    this.showReleased.update(value => !value);
+  }
+
+  toggleShowUnreleased() {
+    this.showUnreleased.update(value => !value);
   }
 }
