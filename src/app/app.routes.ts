@@ -10,6 +10,7 @@ export const routes: Routes = [
   {
     path: 'discover',
     loadComponent: () => import('./discover/page/discover-page').then(m => m.DiscoverPage),
+    canActivate: [AuthGuard],
   },
   {
     path: 'login',

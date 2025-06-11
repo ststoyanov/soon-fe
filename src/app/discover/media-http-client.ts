@@ -31,10 +31,16 @@ export class MediaHttpClient {
   untrack(media: Trackable) {
     const mediaPath = mediaTypePaths[media.mediaType];
 
-    return this.httpClient.post<Trackable[]>(`/api/v1/${mediaPath}/${media.id}/untrack`, {}).pipe(tap(() => this.trackedChanged$.next()));
+    return this.httpClient.post(`/api/v1/${mediaPath}/${media.id}/untrack`, {}).pipe(tap(() => this.trackedChanged$.next()));
   }
 
   getTracked() {
     return this.trackedChanged$.pipe(switchMap(() => this.httpClient.get<Trackable[]>('/api/v1/media/tracked')));
+  }
+
+  markWatched(media: Trackable) {
+    const mediaPath = mediaTypePaths[media.mediaType];
+
+    return this.httpClient.post(`/api/v1/${mediaPath}/${media.id}/watched`, {}).pipe(tap(() => this.trackedChanged$.next()));
   }
 }

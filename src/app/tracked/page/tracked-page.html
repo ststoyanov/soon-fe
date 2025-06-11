@@ -1,27 +1,13 @@
 @if (released().length) {
-  <h2>
-    <button mat-icon-button (click)="toggleShowReleased()">{{ showReleased() ? '-' : '+' }}</button>
-    Released
-  </h2>
-  @if (showReleased()) {
-    <div class="collection">
-      @for (media of released(); track media.id) {
-        <app-media-card [media]="media" (untrack)="untrack(media)"></app-media-card>
-      }
-    </div>
-  }
+  <app-collection name="Released" [media]="released()"
+                  (untrack)="untrack($event)"
+                  (markWatched)="markWatched($event)">
+  </app-collection>
 }
 
 @if (unreleased().length) {
-  <h2>
-    <button mat-icon-button (click)="toggleShowUnreleased()">{{ showUnreleased() ? '-' : '+' }}</button>
-    Coming Sooon
-  </h2>
-  @if (showUnreleased()) {
-    <div class="collection">
-      @for (media of unreleased(); track media.id) {
-        <app-media-card [media]="media" (untrack)="untrack(media)"></app-media-card>
-      }
-    </div>
-  }
+  <app-collection name="Coming Sooon" [media]="unreleased()"
+                  (untrack)="untrack($event)"
+                  (markWatched)="markWatched($event)">
+  </app-collection>
 }

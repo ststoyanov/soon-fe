@@ -16,6 +16,7 @@ export class MediaCardComponent {
   showFront = signal(true);
   untrack = output<void>();
   track = output<void>();
+  markWatched = output<void>();
   recentlyTracked = signal(false);
 
   onMouseLeave() {

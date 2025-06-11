@@ -1,4 +1,4 @@
-import { Component, effect, input, model, output, signal } from '@angular/core';
+import { Component, computed, effect, input, model, output, signal } from '@angular/core';
 import {
   MatCard,
   MatCardActions,
@@ -8,7 +8,7 @@ import {
   MatCardSubtitle,
   MatCardTitle,
 } from '@angular/material/card';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { Trackable } from '../../tracked/trackable';
 import { DatePipe, NgOptimizedImage } from '@angular/common';
 import { MediaImagePipe } from '../../shared/pipes/image-pipe';
@@ -31,6 +31,7 @@ import { MatTooltip } from '@angular/material/tooltip';
     NgOptimizedImage,
     MatIcon,
     MatTooltip,
+    MatIconButton,
   ],
   templateUrl: './media-card-back.component.html',
   styleUrl: './media-card-back.component.scss',
@@ -39,7 +40,11 @@ export class MediaCardBackComponent {
   media = input.required<Trackable>();
   isTracked = signal<boolean>(false);
   trackedChange = output<boolean>();
+  markWatched = output<void>();
   recentlyTracked = model<boolean>(false);
+  watchedLatest = computed(
+    () => !!this.media().lastWatchedAt && !!this.media().lastReleased && this.media().lastReleased! < this.media().lastWatchedAt!
+  );
 
   constructor() {
     effect(() => {

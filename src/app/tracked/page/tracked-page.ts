@@ -1,14 +1,13 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { Trackable } from '../trackable';
-import { MediaCardComponent } from '../../media-card/media-card.component';
 import { MediaHttpClient } from '../../discover/media-http-client';
 import { take } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MatIconButton } from '@angular/material/button';
+import { CollectionComponent } from '../collection/collection.component';
 
 @Component({
   selector: 'app-tracked',
-  imports: [MediaCardComponent, MatIconButton],
+  imports: [CollectionComponent],
   templateUrl: './tracked-page.html',
   styleUrl: './tracked-page.scss',
 })
@@ -48,5 +47,9 @@ export class TrackedPage {
 
   toggleShowUnreleased() {
     this.showUnreleased.update(value => !value);
+  }
+
+  markWatched(media: Trackable) {
+    this.mediaHttpClient.markWatched(media).pipe(take(1)).subscribe();
   }
 }

@@ -16,7 +16,7 @@ export class MediaImagePipe implements PipeTransform {
       case 'MOVIE':
         return TMDB_COVER_URL + url;
       case 'TV_SERIES':
-        return TMDB_COVER_URL + url;
+        return url;
       case 'GAME':
         return url.replace(IGDB_COVER_THUMB, IGDB_COVER_BIG);
       case 'MANGA':
